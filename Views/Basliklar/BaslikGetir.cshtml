@@ -1,0 +1,52 @@
+﻿@model CS_Ogretici.Models.Basliklar
+
+@{
+    ViewData["Title"] = "BaslikGetir";
+    //Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+    // CS_OgreticiLayout icindeki using CS_Ogretici.Models ile cakisiyor
+}
+
+<body>
+    <a style="color:forestgreen"> @if (@ViewBag.VBaslikGetir == null) { }
+        else
+        {
+            @ViewBag.VBaslikGetir
+        }
+        </a>
+</body>
+<br>
+
+
+@using(Html.BeginForm("BaslikGetir","Basliklar", FormMethod.Post))
+{
+    <br />
+    <b>Başlık Id</b>
+    @Html.TextBoxFor(model=>model.BaslikId, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Başlık Adı</b>
+    @Html.TextBoxFor(model=>model.BaslikAd, new { @class="form-control"})
+    <br />
+    <b>Başlık Parent ID</b>
+    @Html.TextBoxFor(model=>model.BaslikParentId, new { @class="form-control"})
+    <br />
+    <b>Başlık Sayfası</b>
+    @Html.TextAreaFor(x=>x.BaslikSayfa, new { @class="form-control",
+    @style="height:500px;     width:1000px;     font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 82%;     overflow:scroll; background-color:lemonchiffon"})
+
+    <br />
+    <button class="btn btn-default" style="background-color:forestgreen; color:white">Başlık Güncelle</button>
+
+    @*
+        <label for="avatar">Choose a profile picture:</label>
+
+    <input type="file"
+           id="avatar" name="avatar"
+           accept="image/png, image/jpeg">
+*@
+
+    @*<div id="froala"></div>
+
+    <script>var editor = new FroalaEditor('#froala');</script>*@
+
+}

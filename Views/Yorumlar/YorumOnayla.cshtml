@@ -1,0 +1,36 @@
+﻿@model CS_Ogretici.Models.Yorumlar
+
+@{
+    ViewData["Title"] = "YorumOnayla";
+    //Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+    // CS_OgreticiLayout icindeki model ile cakisiyor
+}
+
+<form class="form-group" method="post">
+
+    <br />
+    <b>Yorum Id</b>
+    @Html.TextBoxFor(x=>x.YorumId, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Yorum Yazarı</b>
+    @Html.TextBoxFor(x=>x.YorumYazar, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Yorum Parent ID</b>
+    @Html.TextBoxFor(x=>x.YorumParentId, new { @class="form-control"})
+    <br />
+
+    <b style="color: blue">Yorum Aktif</b>
+    @Html.CheckBoxFor(x=>x.YorumAktif)
+    <br />
+    <b>Yorumlanma Zamanı</b>
+    @Html.TextBoxFor(x=>x.YorumTime, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Yorum Sayfası</b>
+    <br />
+    @Html.TextAreaFor(x=>x.YorumSayfa, new { @class="form-control",
+    @style="height:500px;     width:1000px;     font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 82%;     overflow:scroll; background-color:lemonchiffon"})
+    <br />
+
+    <button class="btn btn-info" style="color:azure">Yorum Onayla</button>
+</form>

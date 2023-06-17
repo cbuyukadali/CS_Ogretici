@@ -1,0 +1,61 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<title>C# ÖGRETİCİ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<link href="~/css/w3.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<body>   
+    <div>
+        @Html.Partial("_MenuSideBar")
+    </div>
+        
+    <!-- Page Content -->
+    <div style="margin-left:20%">
+
+        <div class="w3-container w3-teal">
+            <h1>C# Öğretici Projesi</h1>
+        </div>
+
+        <div>
+            <h6>@Html.Partial("_MenuNavBar") </h6>
+            
+        </div>
+        
+        <div class="w3-container">
+            @RenderBody()
+        </div>
+
+        <!--   Prev ve Next-->
+      @*  <div class="text-center">
+            </br>
+            </br>
+            <a href="#" class="previous">&laquo; Previous</a>
+            <a href="#" class="next">Next &raquo;</a>
+
+            <a href="#" class="previous round">&#8249;</a>
+            <a href="#" class="next round">&#8250;</a>
+
+        </div>*@
+
+    </div>
+
+    
+
+
+</body>
+</html>

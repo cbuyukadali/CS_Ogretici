@@ -1,0 +1,73 @@
+﻿@using CS_Ogretici.Models
+@model List<Yorumlar>
+
+@{
+    ViewData["Title"] = "YorumListele";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<center> <h2> Yorum Listesi</h2></center>
+<br />
+<table class="table table-bordered">
+
+    @if (Context.Session.GetString("Tur") == "SuperAdmin")
+    {
+    <tr>
+    <th> Yorumlar</th>
+    <th>Sil</th>
+    <th>Güncelle</th>
+    </tr>
+
+    @foreach(var x in Model)
+    {
+      
+            <tr>
+                <td>
+                <a style="text-align:right"> Yorum @x.YorumId </a>
+                <a style="text-align:right" href="~/Basliklar/SayfaGoster/@x.YorumParentId"> Sayfa: @x.YorumParentId </a>
+                <a style="text-align:right"> Yazar: @x.YorumYazar </a>
+                <a style="text-align:right"> Zaman: @x.YorumTime </a>
+                <a style="text-align:right"> Aktif: @Convert.ToInt16(@x.YorumAktif) </a>
+            
+      
+      <hr>
+            
+                <p style="text-align:left; background-color:lemonchiffon"> @x.YorumSayfa </p>
+            </td>
+            
+            <td><a href="/Yorumlar/YorumSil/@x.YorumId" class="btn btn-danger">Sil</a> </td>
+            <td><a href="/Yorumlar/YorumOnayla/@x.YorumId" class="btn btn-success">Düzenle</a> </td>
+
+            </tr>
+        }
+        }
+        else
+        {
+        <tr>
+            <th> Yorumlar</th>
+        </tr>
+
+
+        @foreach (var x in Model)
+        {
+            if(x.YorumAktif)
+            {
+                <tr>
+                    <td>
+                        @*<a style="text-align:right" href="~/Basliklar/SayfaGoster/@x.YorumParentId"> Sayfa: @x.YorumParentId </a>*@
+                        <a style="text-align:right"> Yazar: @x.YorumYazar </a>
+                        <a style="text-align:right"> Zaman: @x.YorumTime </a>
+
+
+                        <hr>
+
+                        <p style="text-align:left; background-color:lemonchiffon"> @x.YorumSayfa </p>
+                    </td>
+
+                </tr>
+            }
+
+        }
+
+    }
+    </table>

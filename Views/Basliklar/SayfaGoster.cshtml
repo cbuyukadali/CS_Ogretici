@@ -1,0 +1,33 @@
+﻿
+@using CS_Ogretici.Models
+@model List<Basliklar>
+
+
+
+@{
+    ViewData["Title"] = "SayfaGoster";
+    Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+}
+
+@Html.Raw(TempData["Sayfa"])
+
+
+@*@using (Html.BeginForm("BaslikGetir", "Basliklar", FormMethod.Post))
+{
+    <br />
+    <b>Başlık Id</b>
+    @Html.TextBoxFor(model=>model.BaslikId, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Başlık Adı</b>
+    @Html.TextBoxFor(model=>model.BaslikAd, new { @class="form-control"})
+    <br />
+    <b>Başlık Parent ID</b>
+    @Html.TextBoxFor(model=>model.BaslikParentId, new { @class="form-control"})
+    <br />
+    <b>Başlık Sayfası</b>
+    @Html.TextBoxFor(model=>model.BaslikSayfa, new { @class="form-control"})
+    <br />
+    <button class="btn btn-default" style="background-color:forestgreen; color:white">Başlık Güncelle</button>
+
+}
+*@

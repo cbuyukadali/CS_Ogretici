@@ -1,0 +1,131 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+
+<!-- Previous Next icin Css -->
+<style>
+    a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    .next {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    .round {
+        border-radius: 50%;
+    }
+</style>
+
+<!--  Bir başlığa tıklandıktan sonra treeviewde tıklanan ağaç dalının açık kalması için eklendi. -->
+<body onload="myFunct(@TempData["Parid"])">
+</body>
+
+<!-- Sidebar -->
+<aside class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
+    <section>
+        
+        @if (Context.Session.GetString("Tur") == "SuperAdmin")
+        {
+            <h3 class="w3-bar-item">SüperAdmin Menü</h3>
+            <a href="~/Kullanicilar/KullanicilarListele" class="w3-bar-item w3-button" style="background-color:darkslategrey; color:aliceblue">Kullanıcılar</a>
+            <h4></h4>
+            <a href="/Basliklar/AnaBaslikListele" class="w3-bar-item w3-button" style="background-color:darkslategrey; color:aliceblue">Ana Başlıklar</a>
+            <h4></h4>
+            <a href="/Basliklar/TumBaslikListele" class="w3-bar-item w3-button" style="background-color:darkslategrey; color:aliceblue">Tüm Başlıklar</a>
+            <h4></h4>
+            <a href="~/Basliklar/ResimYukle" class="w3-bar-item w3-button" style="background-color:darkslategrey; color:aliceblue">Resim Yükle</a>
+            <h4></h4>
+        }
+
+        <h3 class="w3-bar-item">Menü</h3>
+      
+
+        <a href="/Basliklar/Hosgeldiniz" class="w3-bar-item w3-button">Hoşgeldiniz</a>
+
+       
+     
+        
+
+
+        <!-- Accordion-->
+        @if (ViewBag.Basliklars != null)
+        {
+            @foreach (var de in ViewBag.Basliklars)
+            {
+
+                if (de.BaslikParentId == 0)
+                {
+                    <button class="w3-button w3-block w3-left-align" onclick="myFunct('@de.BaslikId');">
+                        @de.BaslikAd<i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <div id=@de.BaslikId class="w3-hide w3-white w3-card">
+                        @foreach (var de2 in ViewBag.Basliklars)
+                        {
+                            if (de.BaslikId == de2.BaslikParentId)
+                            {
+                                <a href="/Basliklar/SayfaGoster/@de2.BaslikId" class="w3-bar-item w3-button"> @de2.BaslikAd </a>
+
+                            }
+                        }
+                    </div>
+                }
+            }
+
+
+
+            <!-- Script-->
+            <script>
+                function myFunct(id) {
+                    var x = document.getElementById(id);
+                    if (x.classList) {
+                        x.classList.toggle("w3-show");
+                        x.previousElementSibling.classList.toggle("w3-green");
+                    }
+                    else {
+                        // Fallback for IE9 and earlier
+                        if (x.className.indexOf("w3-show") == -1)
+                            x.className = x.className + " w3-show";
+                        else
+                            x.className = x.className.replace("w3-show", "");
+                    }
+                }
+            </script>
+
+            
+        }
+
+        <a href="~/Yorumlar/YorumListele" class="w3-bar-item w3-button">Yorumlar</a>
+        <h4></h4>
+        <a href="~/Yorumlar/YorumEkle" class="w3-bar-item w3-button">Yorum Ekle</a>
+        <h4></h4>
+
+        <!-- -->
+        @if (Context.Session.GetString("Tur") == "SuperAdmin")
+        {
+            <a href="/Basliklar/Hakkinda" class="w3-bar-item w3-button" style="background-color:darkslategrey; color:aliceblue">Hakkında</a>
+        }
+        else
+        {
+            <a href="/Basliklar/Hakkinda" class="w3-bar-item w3-button" >Hakkında</a>
+
+        }
+        <h4></h4>
+        <a href="/Home/Logout" class="btn btn-primary">Çıkış</a>
+        <br />               
+  
+    </section>
+</aside>

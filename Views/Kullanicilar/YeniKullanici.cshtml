@@ -1,0 +1,19 @@
+﻿@model CS_Ogretici.Models.Kullanicilar
+
+@{
+    ViewData["Title"] = "YeniKullanici";
+	Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+
+<form method="post" action="YeniKullanici" controller="Kullanicilar">
+	<ul class="ul-list">
+		<li><input type="text" required class="input" name="KullaniciAd" placeholder="Ad" /><span class="icon"><i class="fa fa-user"></i></span></li>
+		<li><input type="text" required class="input" name="KullaniciSoyad" placeholder="Soyad" /><span class="icon"><i class="fa fa-user"></i></span></li>
+		<li><input type="email" required class="input" name="KullaniciEposta" placeholder="E-Posta" /><span class="icon"><i class="fa fa-user"></i></span></li>
+		<li><input type="password" required class="input" name="KullaniciSifre" placeholder="Şifre" /><span class="icon"><i class="fa fa-lock"></i></span></li>
+		<li><input type="submit" value="KAYIT OL" class="btn"></li>
+	</ul>
+</form>
+
+

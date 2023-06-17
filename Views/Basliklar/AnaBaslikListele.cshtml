@@ -1,0 +1,46 @@
+﻿@using CS_Ogretici.Models
+@model List<Basliklar>
+
+@{
+    ViewData["Title"] = "AnaBaslikListele";
+    Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+}
+
+
+
+<h2> <center> Ana Başlıklar Listesi </center> </h2>
+<a href="/Basliklar/YeniBaslik" class="btn btn-primary">Yeni Başlık</a>
+
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Başlık Id</th>
+        <th> Başlık Ad</th>
+        <th> Başlık Parent ID</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+    </tr>
+
+    @foreach(var x in Model)
+    {
+        @if (x.BaslikParentId==0)
+        {
+
+            <tr>
+                <td> @x.BaslikId</td>
+                <td> @x.BaslikAd</td>
+                <td> @x.BaslikParentId</td>
+                <td><a href="/Basliklar/BaslikSil/@x.BaslikId" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Basliklar/BaslikGetir/@x.BaslikId" class="btn btn-success">Güncelle</a> </td>
+                <td><a href="/Basliklar/AltBaslikListele/@x.BaslikId" class="btn btn-default" style="background-color:aqua">Alt Başlıklar</a> </td>
+            </tr>
+         }
+        
+    }  
+</table>
+
+
+

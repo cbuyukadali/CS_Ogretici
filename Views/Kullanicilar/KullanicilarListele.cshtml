@@ -1,0 +1,57 @@
+﻿
+
+@using CS_Ogretici.Models
+@model List<Kullanicilar>
+
+@{
+    ViewData["Title"] = "KullanicilarListele";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+
+
+<center> <h2> Kullanıcı Listesi</h2></center>
+<a href="/Kullanicilar/YeniKullanici" class="btn btn-primary">Yeni Kullanıcı</a>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Id</th>
+        <th> Ad</th>
+        <th> Soyad</th>
+        <th> Eposta</th>
+        <th> Tür</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+                <td> @x.KullaniciId</td>
+                <td> @x.KullaniciAd</td>
+                <td> @x.KullaniciSoyad</td>
+                <td> @x.KullaniciEposta</td>
+                <td> @x.KullaniciTur</td>
+
+            @if (x.KullaniciEposta=="ziyaretci@e.com")
+            {
+                <td><a></a></td>
+                <td><a></a></td>
+            }
+            else
+            {
+                <td><a href="/Kullanicilar/KullaniciSil/@x.KullaniciId" class="btn btn-danger">Sil</a> </td>    
+                <td><a href="/Kullanicilar/KullaniciGetir/@x.KullaniciId" class="btn btn-success">Güncelle</a> </td>
+            }
+             </tr>
+        }
+
+    
+</table>
+
+
+
+
+
+

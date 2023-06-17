@@ -1,0 +1,62 @@
+﻿@using CS_Ogretici.Models
+@model List<Basliklar>
+
+@{
+    ViewData["Title"] = "TumBaslikListele";
+    Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+}
+
+<center> <h2> Tüm Başlıkları Listesi </h2> </center>
+<a href="/Basliklar/YeniBaslik" class="btn btn-primary">Yeni Başlık</a>
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Başlık Id</th>
+        <th> Başlık Ad</th>
+        <th> Başlık Parent ID</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Alt Başlıklar</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        if (x.BaslikParentId==0)
+        {    <tr>
+                <td> @x.BaslikId</td>
+                <td> @x.BaslikAd</td>
+                <td> @x.BaslikParentId</td>
+                <td><a href="/Basliklar/BaslikSil/@x.BaslikId" class="btn btn-danger">Sil</a> </td>
+                <td><a href="/Basliklar/BaslikGetir/@x.BaslikId" class="btn btn-success">Güncelle</a> </td>
+                <td><a href="/Basliklar/AltBaslikListele/@x.BaslikId" class="btn btn-default" style="background-color:aqua">Alt Başlıklar</a> </td>
+             </tr>
+        }
+
+    }
+
+
+    
+    @foreach (var y in Model)
+    { 
+        @if (y.BaslikParentId==0)
+        {    
+            @foreach(var x in Model)
+            {
+                if(y.BaslikId==x.BaslikParentId)
+                {
+
+                    <tr>
+                        <td> @x.BaslikId</td>
+                        <td> @x.BaslikAd</td>
+                        <td> @x.BaslikParentId</td>
+                        <td><a href="/Basliklar/BaslikSil/@x.BaslikId" class="btn btn-danger">Sil</a> </td>
+                        <td><a href="/Basliklar/BaslikGetir/@x.BaslikId" class="btn btn-success">Güncelle</a> </td>
+                    </tr>
+                }
+
+            }
+        }    
+    }
+</table>
+

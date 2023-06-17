@@ -1,0 +1,34 @@
+﻿
+
+@model CS_Ogretici.Models.Basliklar 
+
+@{
+    ViewData["Title"] = "YeniBaslik";
+    //Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+    // CS_OgreticiLayout icindeki model ile cakisiyor
+}
+
+<body>
+    <a style="color:forestgreen"> @if (@ViewBag.YeniBaslik==null) { } else{@ViewBag.YeniBaslik}</a>
+</body>
+<br>
+
+<form class="form-group" method="post">
+    <br />
+    <b>Başlık Adı</b>
+    @Html.TextBoxFor(x=>x.BaslikAd, new { @class="form-control"})
+    <br />
+    <b>Başlık Parent ID</b>
+    @Html.TextBoxFor(x=>x.BaslikParentId, new { @class="form-control"})
+    <br />
+    <b>Başlık Sayfası</b>
+
+
+    @Html.TextAreaFor(x=>x.BaslikSayfa, new { @class="form-control", 
+    @style="height:500px;     width:1000px;     font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 82%;     overflow:scroll; background-color:lemonchiffon"})
+    <br />
+    <button class="btn btn-info">Başlık Ekle</button>
+
+</form>
+

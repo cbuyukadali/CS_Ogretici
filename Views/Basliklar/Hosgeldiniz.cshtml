@@ -1,0 +1,23 @@
+﻿@using CS_Ogretici.Models
+@model List<Basliklar>
+
+@{
+    ViewData["Title"] = "Hoşgeldiniz";
+    Layout = "~/Views/Shared/CS_OgreticiLayout.cshtml";
+}
+
+
+<center><h2>  C# Öğreticiye Hoşgeldiniz  </h2></center>
+
+@if (@ViewBag.Sayfa == " ")
+{
+    <a>
+        C# (C Şarp olarak okunur) genel amaçlı, nesne yönelimli bir programlama dilidir. C# programlama eğitimimiz, örneklerin yardımıyla C# programlamayı adım adım öğrenmeniz için size rehberlik edecektir."
+    </a>
+}    
+else
+{
+        @ViewBag.Sayfa
+}
+ 
+

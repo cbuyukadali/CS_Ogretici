@@ -1,0 +1,41 @@
+﻿@model CS_Ogretici.Models.Kullanicilar
+
+
+
+@{
+    ViewData["Title"] = "KullaniciGetir";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("KullaniciGetir", "Kullanicilar", FormMethod.Post))
+{
+    <br />
+    <b>Id</b>
+    @Html.TextBoxFor(model=>model.KullaniciId, new { @class="form-control", @readonly = "readonly"})
+    <br />
+    <b>Ad</b>
+    @Html.TextBoxFor(model=>model.KullaniciAd, new { @class="form-control"}) 
+    <br />
+    <b>Soyad</b>
+    @Html.TextBoxFor(model=>model.KullaniciSoyad, new { @class="form-control"})
+    <br />
+    <b>E-Posta</b>
+    @Html.TextBoxFor(model=>model.KullaniciEposta, new { @class="form-control", @type = "email"})                
+    <br />
+    <b>Şifre</b>
+    @Html.TextBoxFor(model=>model.KullaniciSifre, new { @class="form-control", @type="password"} )
+    <br />
+    <b>Tür</b>
+    
+    @Html.DropDownListFor(model => model.KullaniciTur,
+                  new List<SelectListItem> {
+                       new SelectListItem { Text = "SuperAdmin" },
+                       new SelectListItem { Text = "Normal" }
+                    },
+                  new { @class="myselect"})
+    <b>      </b>
+
+    <button class="btn btn-default" style="background-color:forestgreen; color:white">Kullanıcı Güncelle</button>
+
+}

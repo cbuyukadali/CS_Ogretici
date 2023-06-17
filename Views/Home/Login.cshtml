@@ -1,0 +1,85 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+	<meta charset="utf-8">
+	<title>C# Öğretici Giriş Sayfası</title>
+	<link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel='stylesheet'>
+	<link href="~/css/stylelogin.css" rel="stylesheet" />
+
+	<style> 
+body {
+  background-color:cadetblue;
+}
+</style>
+</head>
+
+<body>
+	
+	<a>   <center style="background-color:turquoise; color:#44594C"><h1>C# Öğretici Projesi</h1></center> 	</a>
+        
+
+	<div id="login-form">
+
+		<input type="radio" checked id="login" name="switch" class="hide">
+		<input type="radio" id="signup" name="switch" class="hide">
+
+		<div>
+			<ul class="form-header">
+				<li><label for="login"><i class="fa fa-lock"></i> GİRİŞ YAP</label for="login"></li>
+				<li><label for="signup"><i class="fa fa-credit-card"></i> KAYIT OL</label></li>
+			</ul>
+		</div>
+
+		<div class="section-out">
+			<section class="login-section">
+				<div class="login">
+					<form id="myform" method="post">
+						<ul class="ul-list">
+							<li><input type="email" required class="input" id="txtField" name="userEmail" placeholder="E-Posta" /><span class="icon"><i class="fa fa-user"></i></span></li>
+							<li><input type="password" required class="input" id="txtPass" name="password" placeholder="Şifre" /><span class="icon"><i class="fa fa-lock"></i></span></li>
+							<li><input type="submit" value="GİRİŞ YAP" class="btn"></li>
+						</ul>
+					</form>
+				<br />
+					 <button onclick="ZyFonk()">Ziyaretçi Girişi</button>
+					   <script>
+						   function ZyFonk(){
+							   document.getElementById('txtField').value = 'Ziyaretci@e.com';
+							   document.getElementById('txtPass').value = 'Ziyaretci';
+							   document.forms["myform"].submit();
+						   }
+						</script>					
+							<br />
+					@if (ViewBag.msg != null) 
+					{
+						<p style="color:red;">@Html.Raw(ViewBag.msg)</p>
+					}
+				</div>
+			</section>
+
+
+			<section class="signup-section">
+				
+			<div class="login">
+					<form method="post" action="~/Home/YeniKullanici">
+						<ul class="ul-list">
+							<li><input type="text" required class="input" name="KullaniciAd" placeholder="Ad" /><span class="icon"><i class="fa fa-user"></i></span></li>
+							<li><input type="text" required class="input" name="KullaniciSoyad" placeholder="Soyad" /><span class="icon"><i class="fa fa-user"></i></span></li>
+							<li><input type="email" required class="input" name="KullaniciEposta" placeholder="E-Posta" /><span class="icon"><i class="fa fa-user"></i></span></li>
+							<li><input type="password" required class="input" name="KullaniciSifre" placeholder="Şifre" /><span class="icon"><i class="fa fa-lock"></i></span></li>
+							<li><input type="submit" value="KAYIT OL" class="btn"></li>							
+						</ul>
+					</form>
+				</div>
+
+	
+			</section>
+		</div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Default_Layout.cshtml";
+}
+
+<h2> <center> Projeye Resim Yükle</center> </h2>
+
+<br />
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".png, .jpg, .jpeg, .gif" />
+    <input type="submit" />
+</form>
+    <br />
+   <h4>@ViewBag.Message</h4>

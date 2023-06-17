@@ -1,0 +1,88 @@
+﻿
+
+		<style>
+			.dropbtn {
+				background-color: #4CAF50;
+				color: white;
+				padding: 16px;
+				font-size: 16px;
+				border: none;
+				cursor: pointer;
+			}
+
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #f9f9f9;
+				min-width: 160px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1;
+			}
+
+				.dropdown-content a {
+					color: black;
+					padding: 12px 16px;
+					text-decoration: none;
+					display: block;
+				}
+
+					.dropdown-content a:hover {
+						background-color: #f1f1f1
+					}
+
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+
+			.dropdown:hover .dropbtn {
+				background-color: #3e8e41;
+			}
+		</style>
+
+@*	<div class="dropdown">
+	<button class="dropbtn">Dropdown</button>
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+		</div>
+	</div>*@
+
+@*<a> @(@DateTime.Now.AddMinutes(5).Minute-@DateTime.Now.Minute)</a>*@
+
+<a href="/Home/Logout" class="btn btn-primary" style="float:right">Çıkış</a>
+<a style="background-color:aquamarine;float:right" href="#"> @Html.Raw(Context.Session.GetString("Ad")+", "+Context.Session.GetString("Tur")+"   ")</a>
+<a style="background-color:aquamarine;float:right"> Oturum Süresi = <span id="timer"></span></a>
+
+
+<script>
+	document.getElementById('timer').innerHTML =
+		05 + ":" + 00;
+	startTimer();
+
+
+	function startTimer() {
+		var presentTime = document.getElementById('timer').innerHTML;
+		var timeArray = presentTime.split(/[:]+/);
+		var m = timeArray[0];
+		var s = checkSecond((timeArray[1] - 1));
+		if (s == 59) { m = m - 1 }
+		if (m < 0) {
+			return
+		}
+		document.getElementById('timer').innerHTML = m + ":" + s;
+		console.log(m)
+		setTimeout(startTimer, 1000);
+	}
+	function checkSecond(sec) {
+		if (sec < 10 && sec >= 0) { sec = "0" + sec }; // add zero in front of numbers < 10
+		if (sec < 0) { sec = "59" };
+		return sec;
+	}
+
+</script>
